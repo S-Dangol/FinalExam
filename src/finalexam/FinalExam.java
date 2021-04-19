@@ -1,21 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package finalexam;
 
-/**
- *
- * @author zerof
- */
+import java.io.*;
+
 public class FinalExam {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        File file = new File("originalText.txt");
+        String origin = "";
+        String encrypt = "";
+        int key = 1;
+        char[] chars;
+        
+        // read originalText.txt
+        try {
+            BufferedReader br = new BufferedReader(
+                    new FileReader("originalText.txt"));
+            origin = br.readLine();
+        } catch (Exception e) {
+            return;
+        }
+        
+        
+        System.out.println(origin);
+
+        chars = origin.toCharArray();
+        
+        
+        for (char c : chars) {
+            c += 1;
+        }
+
+        
+        // Write on ecnryptText.txt
+        try {
+            BufferedWriter bw = new BufferedWriter(
+                    new FileWriter("ecnryptedText.txt"));
+            for (char c : chars) {
+                bw.write(c);
+            }
+            bw.close();
+
+           
+        } catch (Exception ex) {
+            return;
+        }
+        
+        // Read encryptText.txt
+        try {
+            BufferedReader br = new BufferedReader(
+                    new FileReader("ecnryptedText.txt"));
+            encrypt = br.readLine();
+        } catch (Exception e) {
+            return;
+        }
+        System.out.println(encrypt);
+
     }
-    
+
 }
