@@ -13,6 +13,8 @@ public class FinalExam {
         char[] chars;
         char[] char2 = new char[1000];
         char[] char3 = new char[1000];
+        char[] char4 = new char[1000];
+        char[] char5 = new char[1000];
         String zxc = "";
         int a = 0, randomKey;
 
@@ -61,9 +63,9 @@ public class FinalExam {
         try {
             BufferedWriter bw = new BufferedWriter(
                     new FileWriter("ecnryptedText.txt"));
-            for (char b : char3) {
-                System.out.print(b);
-                bw.write(b);
+            for (char c : char3) {
+                System.out.print(c);
+                bw.write(c);
             }
             bw.close();
         } catch (Exception ex) {
@@ -82,6 +84,30 @@ public class FinalExam {
         System.out.println(encrypt);
 
         //Decrypting encryptText.txt
+        char4 = encrypt.toCharArray();
+        
+//        int b = 3;
+//        int d=0;
+//        for (char c : char4) {
+//
+//            System.out.print(c);
+//            char5[d] = char4[b];
+//            b++;
+//            d++;
+//        }
+        int ss = char4.length;
+        ss -= 3;
+        for(int i=0, k=0;i<char4.length;i++){
+            if(i>3 && i<ss ){
+                char5[k]=char4[i];
+                k++;
+            }
+        }
+        System.out.println("un capsulated");
+        for (char c : char5){
+            System.out.print(c);
+        }
+
 //        int[] randomNumbers = new int[FinalExam.arrlength()];
 //        for (int i = 0; i < randomNumbers.length; i++) {
 //            randomNumbers[i] = 1 + r.nextInt(8);
