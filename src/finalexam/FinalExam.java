@@ -1,6 +1,7 @@
 package finalexam;
 
 import java.io.*;
+import java.util.Random;
 
 public class FinalExam {
 
@@ -10,6 +11,19 @@ public class FinalExam {
         String encrypt = "";
         int key = 1;
         char[] chars;
+        char[] char2 = new char[1000];
+        char[] char3 = new char[1000];
+        String zxc = "";
+        int a = 0,randomKey;
+        
+        String header= "A1B2";
+        String trailer= "END";
+        
+        
+        //Random Key generated "randomKey"
+        Random r = new Random(8);
+        randomKey = r.nextInt(9);
+        System.out.println(randomKey);
         
         // read originalText.txt
         try {
@@ -22,28 +36,38 @@ public class FinalExam {
         
         
         System.out.println(origin);
-
+        
+        
         chars = origin.toCharArray();
-        
-        
         for (char c : chars) {
-            c += 1;
+            c += randomKey;
+            System.out.print(c);
+            char2[a] = c;
+            a++;
         }
-
+        char3 = ‘A1B2’
+        
+        
+        zxc = new String(char2);
+        System.out.println("");
+        System.out.println("zzz");
+        System.out.println(zxc);
+        System.out.println("zzz");
+        
         
         // Write on ecnryptText.txt
         try {
             BufferedWriter bw = new BufferedWriter(
                     new FileWriter("ecnryptedText.txt"));
-            for (char c : chars) {
-                bw.write(c);
+            for (char b : char2) {
+                System.out.print(b);
+                bw.write(b);
             }
             bw.close();
-
-           
         } catch (Exception ex) {
             return;
         }
+        
         
         // Read encryptText.txt
         try {
@@ -53,8 +77,26 @@ public class FinalExam {
         } catch (Exception e) {
             return;
         }
+        System.out.println("");
         System.out.println(encrypt);
-
+        
+        
+        //Decrypting encryptText.txt
+        
+        
+       
+//        int[] randomNumbers = new int[FinalExam.arrlength()];
+//        for (int i = 0; i < randomNumbers.length; i++) {
+//            randomNumbers[i] = 1 + r.nextInt(8);
+//        }
+       
+        
+//         for (char c : ch) {
+//            for (int i : RandomGenerator.gen()) {
+//                c += RandomGenerator.gen()[i];
+//                System.out.print(c);
+//            }
+//        }
     }
 
 }
