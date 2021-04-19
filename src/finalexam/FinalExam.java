@@ -85,7 +85,7 @@ public class FinalExam {
 
         //Decrypting encryptText.txt
         char4 = encrypt.toCharArray();
-        
+
 //        int b = 3;
 //        int d=0;
 //        for (char c : char4) {
@@ -97,17 +97,23 @@ public class FinalExam {
 //        }
         int ss = char4.length;
         ss -= 3;
-        for(int i=0, k=0;i<char4.length;i++){
-            if(i>3 && i<ss ){
-                char5[k]=char4[i];
+        for (int i = 0, k = 0; i < char4.length; i++) {
+            if (i > 3 && i < ss) {
+                char5[k] = char4[i];
                 k++;
             }
         }
         System.out.println("un capsulated");
-        for (char c : char5){
+        for (char c : char5) {
             System.out.print(c);
         }
-
+        zxc = new String(char5);
+        sb = new StringBuilder(zxc);
+        sb.reverse();
+        encrypt = sb+"";
+        System.out.println("");
+        System.out.println("un rev");
+        System.out.println(encrypt);
 //        int[] randomNumbers = new int[FinalExam.arrlength()];
 //        for (int i = 0; i < randomNumbers.length; i++) {
 //            randomNumbers[i] = 1 + r.nextInt(8);
