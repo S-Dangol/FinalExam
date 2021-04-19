@@ -15,6 +15,7 @@ public class FinalExam {
         char[] char3 = new char[1000];
         char[] char4 = new char[1000];
         char[] char5 = new char[1000];
+        char[] chars6 = new char[1000];
         String zxc = "";
         int a = 0, randomKey;
 
@@ -24,7 +25,7 @@ public class FinalExam {
         //Random Key generated "randomKey"
         Random r = new Random(8);
         randomKey = r.nextInt(9);
-        System.out.println(randomKey);
+ 
 
         // read originalText.txt
         try {
@@ -35,36 +36,32 @@ public class FinalExam {
             return;
         }
 
-        System.out.println(origin);
+        System.out.println("Original Text : \n"+origin);
 
         chars = origin.toCharArray();
         for (char c : chars) {
             c += randomKey;
-            System.out.print(c);
+      
             char2[a] = c;
             a++;
         }
-
+        int s = a;
         zxc = new String(char2);
+        System.out.println("");
+        System.out.println("Encrypted Text : \n"+ zxc);
         StringBuilder sb = new StringBuilder(zxc);
         sb.reverse();
         encrypt = header + sb + trailer;
-
-//        for (char z : ){
-//            
-//        }
         System.out.println("");
-        System.out.println("zzz");
-        System.out.println(encrypt);
-        System.out.println("zzz");
-
-        char3 = encrypt.toCharArray();
+        System.out.println("Reversed Text : \n"+ encrypt);
+        
         // Write on ecnryptText.txt
+        char3 = encrypt.toCharArray();
         try {
             BufferedWriter bw = new BufferedWriter(
                     new FileWriter("ecnryptedText.txt"));
             for (char c : char3) {
-                System.out.print(c);
+              
                 bw.write(c);
             }
             bw.close();
@@ -81,49 +78,69 @@ public class FinalExam {
             return;
         }
         System.out.println("");
-        System.out.println(encrypt);
-
+        System.out.println("Encrypted, Reversed and Encapsilated Text : \n"+ encrypt);
         //Decrypting encryptText.txt
         char4 = encrypt.toCharArray();
 
-//        int b = 3;
-//        int d=0;
-//        for (char c : char4) {
-//
-//            System.out.print(c);
-//            char5[d] = char4[b];
-//            b++;
-//            d++;
-//        }
         int ss = char4.length;
         ss -= 3;
-        for (int i = 0, k = 0; i < char4.length; i++) {
+
+        int k, i;
+        for (i = 0, k = 0; i < char4.length; i++) {
             if (i > 3 && i < ss) {
                 char5[k] = char4[i];
                 k++;
             }
         }
-        System.out.println("un capsulated");
+
         for (char c : char5) {
-            System.out.print(c);
+            
         }
         zxc = new String(char5);
         sb = new StringBuilder(zxc);
         sb.reverse();
-        encrypt = sb+"";
+        encrypt = sb + "";
+
+        // resultText.txt
+        a = 0;
+        chars6 = encrypt.toCharArray();
+        for (char c : chars6) {
+            c -= randomKey;
+
+            char2[a] = c;
+            a++;
+        }
+        
+
+        String result = new String(char2);
+ 
+        
+        char[] finalChar = new char[s];
+        for (i = 0, k = 0; i < char2.length; i++) {
+            if (i < s) {
+             finalChar[k] = char2[i];
+                k++;
+            }
+        }
+
+        result = new String(finalChar);
         System.out.println("");
-        System.out.println("un rev");
-        System.out.println(encrypt);
-//        int[] randomNumbers = new int[FinalExam.arrlength()];
-//        for (int i = 0; i < randomNumbers.length; i++) {
-//            randomNumbers[i] = 1 + r.nextInt(8);
-//        }
-//         for (char c : ch) {
-//            for (int i : RandomGenerator.gen()) {
-//                c += RandomGenerator.gen()[i];
-//                System.out.print(c);
-//            }
-//        }
+        System.out.println("Result of Decryption Text : \n"+ result);
+        
+        char3 = result.toCharArray();
+        try {
+            BufferedWriter bw = new BufferedWriter(
+                    new FileWriter("resultText.txt"));
+            for (char c : char3) {
+              
+                bw.write(c);
+            }
+            bw.close();
+        } catch (Exception ex) {
+            return;
+        }
+        // Write on ecnryptText.txt
+
     }
 
 }
