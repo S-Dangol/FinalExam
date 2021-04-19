@@ -9,7 +9,7 @@ public class FinalExam {
         File file = new File("originalText.txt");
         String origin = "";
         String encrypt = "";
-        int key = 1;
+        
         char[] chars;
         char[] char2 = new char[1000];
         char[] char3 = new char[1000];
@@ -22,9 +22,7 @@ public class FinalExam {
         String header = "A1B2";
         String trailer = "END";
 
-        //Random Key generated "randomKey"
-        Random r = new Random(8);
-        randomKey = r.nextInt(9);
+        randomKey = RandomKey();
  
 
         // read originalText.txt
@@ -45,7 +43,10 @@ public class FinalExam {
             char2[a] = c;
             a++;
         }
+        
+        //saving index size of original text
         int s = a;
+        
         zxc = new String(char2);
         System.out.println("");
         System.out.println("Encrypted Text : \n"+ zxc);
@@ -79,6 +80,8 @@ public class FinalExam {
         }
         System.out.println("");
         System.out.println("Encrypted, Reversed and Encapsilated Text : \n"+ encrypt);
+        
+        
         //Decrypting encryptText.txt
         char4 = encrypt.toCharArray();
 
@@ -93,9 +96,7 @@ public class FinalExam {
             }
         }
 
-        for (char c : char5) {
-            
-        }
+   
         zxc = new String(char5);
         sb = new StringBuilder(zxc);
         sb.reverse();
@@ -141,6 +142,14 @@ public class FinalExam {
         }
         // Write on ecnryptText.txt
 
+    }
+
+    public static int RandomKey() {
+        int randomKey;
+        //Random Key generated "randomKey"
+        Random r = new Random(8);
+        randomKey = r.nextInt(9);
+        return randomKey;
     }
 
 }
